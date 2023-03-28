@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Welcome
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title>
+        Welcome
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <br>
+  <h2 class="ion-padding-start">Login</h2>
+  <ion-list class="ion-padding-horizontal">
+    <ion-item>
+      <ion-input placeholder="Username" type="text" [(ngModel)]="username" name="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="Password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox class="ion-margin-end"></ion-checkbox>
+      <ion-label>Remain logged in</ion-label>
+    </ion-item>
+
+    <ion-button (click)="login()" shape="round" size="default" color="success"><ion-icon slot="end"
+        name="log-in-outline"></ion-icon>Login</ion-button>
+    <p>
+      {{clickCounter}} Login Attempts
+    </p>
+
+
+
+
+
+  </ion-list>
+
+
+
+
+</ion-content>
