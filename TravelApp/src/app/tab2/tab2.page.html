@@ -9,22 +9,20 @@
     <ion-toolbar>
       <ion-title size="large">Welcome, </ion-title>
     </ion-toolbar>
+    <ion-button id="addDest"size="small">Add Destination</ion-button>
   </ion-header>
 
 
   <div *ngIf="destinations.length== 0; then displayErrorMessage else showDestinations">No Destinations to display</div>
   <ng-template #displayErrorMessage>
     <p size="large">No Destinations to Display</p>
-
-
   </ng-template>
-
 
   <ng-template #showDestinations>
     <ion-list>
       <ion-list-header>Destinations</ion-list-header>
-      <ion-item-sliding *ngFor="let destination of destinations">
-        <ion-item id="travelDestination">
+      <ion-item-sliding *ngFor="let destination of destinations" class="travelDestination" >
+        <ion-item style="background-color: white;" >
           <ion-thumbnail slot="start"><!--an image of the location will go here-->
             <ion-icon style="width: 100%; height: 100%" name="image-outline"></ion-icon>
           </ion-thumbnail>

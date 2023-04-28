@@ -12,6 +12,13 @@ import { IonicModule } from '@ionic/angular';
 })
 export class DestinationsPage implements OnInit {
 
+  destinations = [
+    {location:'New Zealand', travelDate:'29/11/2023', description:''},
+    {location:'Gold Coast', travelDate:'12/09/2023', description:''},
+    {location:'New York', travelDate:'29/03/2024', description:''}
+];
+
+
   constructor() { }
 
   ngOnInit() {
