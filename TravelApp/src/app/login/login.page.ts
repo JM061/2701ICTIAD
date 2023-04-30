@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+
   }
 
   //const user = this.checkAccounts(this.username, this.password);

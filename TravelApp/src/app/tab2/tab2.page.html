@@ -9,7 +9,7 @@
     <ion-toolbar>
       <ion-title size="large">Welcome, </ion-title>
     </ion-toolbar>
-    <ion-button id="addDest"size="small">Add Destination</ion-button>
+    <ion-button id="addDest" size="small" (click)="presentModal()">Add Destination</ion-button>
   </ion-header>
 
 
@@ -21,8 +21,8 @@
   <ng-template #showDestinations>
     <ion-list>
       <ion-list-header>Destinations</ion-list-header>
-      <ion-item-sliding *ngFor="let destination of destinations" class="travelDestination" >
-        <ion-item style="background-color: white;" >
+      <ion-item-sliding *ngFor="let destination of destinations" class="travelDestination">
+        <ion-item style="background-color: white;">
           <ion-thumbnail slot="start"><!--an image of the location will go here-->
             <ion-icon style="width: 100%; height: 100%" name="image-outline"></ion-icon>
           </ion-thumbnail>
