@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
+//this page will display the users account, number of trips, user can change their name, emial and password
+//
   constructor() {}
 
 }

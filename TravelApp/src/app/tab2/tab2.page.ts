@@ -10,12 +10,16 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
+
+  //initialises variables used on this page
   fName: string = ''
 
   location:any = '';
   travelDate:any = '';
   description:any = '';
-
+//array of destinations for the list
+//it will be moved to an SQLite DB for assignment 2, to each account to have separate destinations, each destination will have more data
+//number of days, accomidation type, type of trip, activities, etc..
   destinations = [
     {location:'New Zealand', travelDate:'29/11/2023', description:'Birthday Celebration'},
     {location:'Gold Coast', travelDate:'12/09/2023', description:'Weekend Getaway'},

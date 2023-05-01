@@ -7,15 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- users = [
-    {fName: "Jacob", lName: "Murphy", email:"jrmurph06@gmail.com", password:"abcd"},
-    {fName: "Bryce", lName: "Murphy", email:"bjmurph06@gmail.com", password:"1234"},
+ users = [ //array of users for login page
+    {fName: "Jacob", lName: "Murphy", email:"jacobemail@gmail.com", password:"abcd"},
+    {fName: "Bryce", lName: "Murphy", email:"bryceemail@gmail.com", password:"1234"},
     {fName: "Test", lName: "test", email:"test@test.com.au", password:"test"},
     {fName: "", lName: "", email:"test@test.com.au", password:""}
   ]
   fName: string = '';
   password: string = '';
-  showError: boolean = false;
+  showError: boolean = false; //will not show error on page when loaded
 
   constructor(private router:Router) { }
 
@@ -25,23 +25,17 @@ export class LoginPage implements OnInit {
 
 
   checkUserPass(){
-    const user = this.checkAccounts(this.fName, this.password);
-    if (this.checkAccounts(this.fName, this.password)){
+    const user = this.checkAccounts(this.fName, this.password);//takes first name and password from login page
+    if (this.checkAccounts(this.fName, this.password)){//if the firstname and password are found the page will direct to /tabs
       this.router.navigate(['/tabs', {fName: user.fName}])
     } else{
 
-    this.showError = true;
+    this.showError = true;//if the firstname and password is not found it will display the error which is found on the html page
     }
   }
     checkAccounts(fName: string, password: string): any{
-
-    const user = this.users.find((u) => u.fName ===fName && u.password ===password);
-    return user !== undefined;
+    const user = this.users.find((u) => u.fName ===fName && u.password ===password);//checks array of existing users, if a match is found it navigates to the tabs page redirecting to tab2
+    return user !== undefined;//
   }
-
-
-
-
-
 
 }

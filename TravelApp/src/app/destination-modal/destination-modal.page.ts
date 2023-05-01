@@ -20,12 +20,14 @@ export class DestinationModalPage implements OnInit {
 
   constructor(private nav: NavParams, private modalController:ModalController) { }
 
+
+  //gets the data from the user input
   ngOnInit() {
     this.location = this.nav.get("location")
     this.travelDate = this.nav.get("travelDate")
     this.description = this.nav.get("description")
   }
-
+  //when the modal is dismissed the data from the inputs will be passed back so it can be displayed on the tab2 page in the list
   dismissModal(){
     this.modalController.dismiss({location: this.location, travelDate: this.travelDate, description: this.description})
   }
