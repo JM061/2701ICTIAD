@@ -14,12 +14,30 @@
     </ion-toolbar>
   </ion-header>
 
-  <form action="">
-
-
-
-
+  <form>
+    <ion-item>
+      <ion-label>Destination Name:</ion-label>
+      <ion-input type="text" [(ngModel)]="location" name="location"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date: </ion-label>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    </ion-item>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime presentation="date" [showDefaultButtons]="true" id="datetime" displayFormat="DD/MM/YYYY HH:mm"
+          [(ngModel)]="travelDate" name="travelDate"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="description" name="description"></ion-input>
+    </ion-item>
   </form>
+  <div class="buttonLocation">
+    <ion-button id="addDestinationButton" size="small" (click)="dismissModal()">Create Destination</ion-button>
+  </div>
+
 
 
 </ion-content>

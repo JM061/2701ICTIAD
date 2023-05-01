@@ -7,14 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- // users = [
- //   {username:"jMurphy", fNname: "Jacob", lName: "Murphy", email:"jrmurph06@gmail.com", password:"abcd"},
- //   {username:"bMurphy", fNname: "Bryce", lName: "Murphy", email:"bjmurph06@gmail.com", password:"1234"},
- // ]
-
-  //username: string = '';
-  //password: string = '';
-  //showError: boolean = false;
+ users = [
+    {fName: "Jacob", lName: "Murphy", email:"jrmurph06@gmail.com", password:"abcd"},
+    {fName: "Bryce", lName: "Murphy", email:"bjmurph06@gmail.com", password:"1234"},
+    {fName: "Test", lName: "test", email:"test@test.com.au", password:"test"},
+    {fName: "", lName: "", email:"test@test.com.au", password:""}
+  ]
+  fName: string = '';
+  password: string = '';
+  showError: boolean = false;
 
   constructor(private router:Router) { }
 
@@ -22,21 +23,22 @@ export class LoginPage implements OnInit {
 
   }
 
-  //const user = this.checkAccounts(this.username, this.password);
-  //checkUserPass(){
-  //  if (this.checkAccounts(this.username, this.password)){
-  //    this.router.navigate(['/tabs', {fName: user.fName}])
-  //  } else{
-//
-  //  this.showError = true;
-  //  }
-  //}
-  //  checkAccounts(username: string, password: string): any{
-//
-  //  const user = this.users.find((u) => u.username ===username && u.password ===password);
-  //  return user !== undefined;
-  //}
-//
+
+  checkUserPass(){
+    const user = this.checkAccounts(this.fName, this.password);
+    if (this.checkAccounts(this.fName, this.password)){
+      this.router.navigate(['/tabs', {fName: user.fName}])
+    } else{
+
+    this.showError = true;
+    }
+  }
+    checkAccounts(fName: string, password: string): any{
+
+    const user = this.users.find((u) => u.fName ===fName && u.password ===password);
+    return user !== undefined;
+  }
+
 
 
 

@@ -10,40 +10,72 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-  fName: any = ''
+  fName: string = ''
+
   location:any = '';
   travelDate:any = '';
   description:any = '';
 
   destinations = [
-    {location:'New Zealand', travelDate:'29/11/2023', description:''},
-    {location:'Gold Coast', travelDate:'12/09/2023', description:''},
-    {location:'New York', travelDate:'29/03/2024', description:''}
+    {location:'New Zealand', travelDate:'29/11/2023', description:'Birthday Celebration'},
+    {location:'Gold Coast', travelDate:'12/09/2023', description:'Weekend Getaway'},
+    {location:'New York', travelDate:'29/03/2024', description:'Family Celebration'}
 ];
 
 
 
-  constructor(private route:ActivatedRoute, private modalController:ModalController) {
+  constructor(private route:ActivatedRoute, private modalController:ModalController) {}
 
-
-
-
-  }
+//get the username that the user logs in with to display on main page
   ngOnInit(): void {
     this.fName = this.route.snapshot.paramMap.get('fName');
   }
+
+//removes the selected list item using the index
+  deleteDestination(index){
+    this.destinations.splice(index, 1)
+  }
+
+//presents the modal that allows the user to add a destination
   async presentModal(){
     const modal = await this.modalController.create({
                 component:DestinationModalPage,
-                componentProps: {location: this.location, travelDate: this.travelDate, description: this.description}
+                componentProps: [{location: this.location, travelDate: this.travelDate, description: this.description}]
     });
-    modal.onDidDismiss()
+    modal.onDidDismiss()//dismisses the modal and pushes the data to the array that displays the destinations
               .then((data) => {
-                  this.location = data.data.location;
-                  this.travelDate = data.data.travelDate
-                  this.description = data.data.description
+                this.location = data.data.location;
+                this.travelDate = data.data.travelDate;
+                this.description = data.data.description;
+                console.log(data)
+                  this.destinations.push(data.data)
               });
             return modal.present();
 }
+
+//when the user selects the edit button in the slide menu, will display the edit screen
+//user can edit the destination
+  async editDestination(index){
+    let modal = await this.modalController.create({
+                component:DestinationModalPage,
+                componentProps: {location: this.destinations[index].location, travelDate: this.destinations[index].travelDate, description: this.destinations[index].description}
+    });
+      //when the modal is dismissed it changes the data in the array.
+      //will then update the list
+      modal.onDidDismiss()
+        .then((data) => {
+          this.location = data.data.location;
+          this.travelDate = data.data.travelDate;
+          this.description= data.data.description;
+          this.destinations[index]=(data.data)
+        })
+        return modal.present()
+  }
+
+
+
+
+
+
 
 }
