@@ -37,14 +37,21 @@
 
 #newACC{
   bottom: 0px;
-
-
-
 }
 
 #signInForm{
   margin: auto;
   width: 90%;
 
+
+}
+
+#errorMessage{
+    color: red;
+    font-weight: bold;
+}
+
+#heading{
+  text-align: center;
 
 }
