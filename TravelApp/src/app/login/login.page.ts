@@ -28,6 +28,7 @@ export class LoginPage implements OnInit {
     const user = this.checkAccounts(this.fName, this.password);//takes first name and password from login page
     if (this.checkAccounts(this.fName, this.password)){//if the firstname and password are found the page will direct to /tabs
       this.router.navigate(['/tabs', {fName: user.fName}])
+      //login()
     } else{
 
     this.showError = true;//if the firstname and password is not found it will display the error which is found on the html page
@@ -35,7 +36,17 @@ export class LoginPage implements OnInit {
   }
     checkAccounts(fName: string, password: string): any{
     const user = this.users.find((u) => u.fName ===fName && u.password ===password);//checks array of existing users, if a match is found it navigates to the tabs page redirecting to tab2
-    return user !== undefined;//
+    return user !== undefined;
   }
 
-}
+
+
+  //login(){
+    //this.storage.set("username", this.username);
+    //this.router.navigateByUrl('/account/' + this.username);
+
+  //}
+
+  }
+
+
