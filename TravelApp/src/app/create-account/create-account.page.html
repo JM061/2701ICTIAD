@@ -12,25 +12,27 @@
   <form id="newAccountForm">
     <ion-item>
       <ion-label>First Name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="fName" name="fName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Last Name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="lName" name="lName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Confirm Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="confirmPassword" name="confirmPassword"></ion-input>
+      <!--<div *ngIf="passwordError">Incorrect username or password. Please try again.</div>-->
+
     </ion-item>
-    <ion-button size="small" [routerLink]="['/tabs']">Submit</ion-button>
+    <ion-button size="small" (click)="createUserAccount()">Submit</ion-button>
 
 
   </form>

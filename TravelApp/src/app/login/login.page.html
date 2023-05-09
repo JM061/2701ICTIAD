@@ -24,8 +24,9 @@
         <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
       </ion-item>
       <!--<div *ngIf="showError">Incorrect username or password. Please try again.</div>-->
-      <div id="errorMessage" *ngIf="showError">Incorrect username or password. Please try again.</div> <!--error that gets displayed if the firstname and password are not found in the array of users-->
-      <ion-button size="small" (click)="checkUserPass()"> Login</ion-button>
+      <div id="errorMessage" *ngIf="showError">Incorrect username or password. Please try again.</div>
+      <!--error that gets displayed if the firstname and password are not found in the array of users-->
+      <ion-button size="small" (click)="login(fName, password)"> Login</ion-button>
 
       <ion-footer id="newACC">
         <ion-button class="newAccount" [routerLink]="['/create-account']" size="small">Create Account</ion-button>

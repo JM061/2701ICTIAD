@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DestinationModalPage } from '../destination-modal/destination-modal.page';
 import { ModalController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-tab2',
@@ -28,12 +27,21 @@ export class Tab2Page implements OnInit {
 
 
 
-  constructor(private route:ActivatedRoute, private modalController:ModalController) {}
+  constructor(private activatedRoute:ActivatedRoute, private router:Router, private modalController:ModalController) {}
 
 //get the username that the user logs in with to display on main page
   ngOnInit(): void {
-    this.fName = this.route.snapshot.paramMap.get('fName');
+
+
   }
+
+
+  getFName(){
+    this.fName = this.activatedRoute.snapshot.queryParamMap.get('fName');
+
+  }
+
+
 
 //removes the selected list item using the index
   deleteDestination(index){
