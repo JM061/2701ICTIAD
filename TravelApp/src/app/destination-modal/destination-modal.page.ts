@@ -1,41 +1,65 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild, importProvidersFrom } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  importProvidersFrom,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, ModalController, NavParams } from '@ionic/angular';
+import { UserStorageService } from '../user-storage.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-destination-modal',
   templateUrl: './destination-modal.page.html',
   styleUrls: ['./destination-modal.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule],
 })
-
-
-
 export class DestinationModalPage implements OnInit {
-  location = '';
-  travelDate = '';
-  description = '';
+  fName: string;
+  location: string;
+  travelDate: string;
+  description: string;
+  accomType: string;
+  tripLength: any;
 
-  constructor(private nav: NavParams, private modalController:ModalController) { }
-
+  constructor(
+    private nav: NavParams,
+    private modalController: ModalController,
+    private userStorage: UserStorageService,
+    private storage: Storage
+  ) {}
 
   //gets the data from the user input
   ngOnInit() {
-    this.location = this.nav.get("location")
-    this.travelDate = this.nav.get("travelDate")
-    this.description = this.nav.get("description")
+    this.location = this.nav.get('location');
+    this.travelDate = this.nav.get('travelDate');
+    this.description = this.nav.get('description');
   }
 
-  closeModal(){
+  dismissModal() {
     this.modalController.dismiss();
-
-
   }
 
-  //when the modal is dismissed the data from the inputs will be passed back so it can be displayed on the tab2 page in the list
-  dismissModal(){
-    this.modalController.dismiss({location: this.location, travelDate: this.travelDate, description: this.description})
+  async addDestination() {
+    const updatedDestinations = await this.userStorage.addDestination(
+      this.fName,
+      this.location,
+      this.travelDate,
+      this.description,
+      this.tripLength,
+      this.accomType
+    );
+
+    console.log(
+      'New Destination:',
+      this.location,
+      this.travelDate,
+      this.description,
+      this.tripLength,
+      this.accomType
+    );
   }
 }
