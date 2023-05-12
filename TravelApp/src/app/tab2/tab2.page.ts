@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DestinationModalPage } from '../destination-modal/destination-modal.page';
-import { ModalController } from '@ionic/angular';
-import { UserStorageService } from '../user-storage.service';
+import { ModalController, Platform } from '@ionic/angular';
+import { Destination, UserStorageService } from '../user-storage.service';
 
 @Component({
   selector: 'app-tab2',
@@ -16,44 +16,78 @@ export class Tab2Page implements OnInit {
   travelDate: any = '';
   description: any = '';
 
+  destinations: Destination[] = [];
+  newDestination: Destination = <Destination>{};
+
+
+
   //array of destinations for the list
   //it will be moved to an SQLite DB for assignment 2, to each account to have separate destinations, each destination will have more data
   //number of days, accomidation type, type of trip, activities, etc..
-  destinations = [
-    {
-      location: 'New Zealand',
-      travelDate: '29/11/2023',
-      description: 'Birthday Celebration',
-    },
-    {
-      location: 'Gold Coast',
-      travelDate: '12/09/2023',
-      description: 'Weekend Getaway',
-    },
-    {
-      location: 'New York',
-      travelDate: '29/03/2024',
-      description: 'Family Celebration',
-    },
-  ];
+  //destinations = [
+  //  {
+  //    location: 'New Zealand',
+  //    travelDate: '29/11/2023',
+  //    description: 'Birthday Celebration',
+  //  },
+  //  {
+  //    location: 'Gold Coast',
+  //    travelDate: '12/09/2023',
+  //    description: 'Weekend Getaway',
+  //  },
+  //  {
+  //    location: 'New York',
+  //    travelDate: '29/03/2024',
+  //    description: 'Family Celebration',
+  //  },
+  //];
+  destinationList = []
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private modalController: ModalController,
-    private userData: UserStorageService
-  ) {}
+    private storageService: UserStorageService,
+    private plt: Platform
+  ) {
+    this.plt.ready().then(()=>{
+      this.loadDestinations();
+    });
+  }
+
+    loadDestinations(){
+      this.storageService.getDestinations().then(destinations =>{
+        this.destinations = destinations
+      });
+    }
+
 
   //get the username that the user logs in with to display on main page
   ngOnInit(): void {}
 
-  getFName() {
-    this.fName = this.activatedRoute.snapshot.queryParamMap.get('fName');
-  }
+
 
   //removes the selected list item using the index
-  deleteDestination(index) {
-    this.destinations.splice(index, 1);
-  }
+  //deleteDestination(index) {
+  //  this.destinations.splice(index, 1);
+  //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //presents the modal that allows the user to add a destination
   async presentModal() {

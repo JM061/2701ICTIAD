@@ -8,10 +8,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <form >
+  <form>
     <ion-item>
       <ion-label>Destination Name:</ion-label>
-      <ion-input type="text" [(ngModel)]="location" name="location"></ion-input>
+      <ion-input type="text" [(ngModel)]="newDestination.location" name="location"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Date: </ion-label>
@@ -20,17 +20,18 @@
     <ion-modal [keepContentsMounted]="true">
       <ng-template>
         <ion-datetime presentation="date" [showDefaultButtons]="true" id="datetime" displayFormat="DD/MM/YYYY HH:mm"
-          [(ngModel)]="travelDate" name="travelDate"></ion-datetime>
+          [(ngModel)]="newDestination.travelDate" name="travelDate"></ion-datetime>
       </ng-template>
     </ion-modal>
     <ion-item>
       <ion-label>Description</ion-label>
-      <ion-input type="text" [(ngModel)]="description" name="description"></ion-input>
+      <ion-input type="text" [(ngModel)]="newDestination.description" name="description"></ion-input>
     </ion-item>
     <ion-item>
       <ion-list>
         <ion-item>
-          <ion-select aria-label="Fruit" interface="popover" placeholder="Accomidation Type" [(ngModel)]="accomType" name="accomType">
+          <ion-select aria-label="Fruit" interface="popover" placeholder="Accomidation Type"
+            [(ngModel)]="newDestination.accomType" name="accomType">
             <ion-select-option value="hotel">Hotel</ion-select-option>
             <ion-select-option value="airbnb">AirBnb</ion-select-option>
             <ion-select-option value="famfriend">Family/Friends</ion-select-option>
@@ -41,11 +42,11 @@
     </ion-item>
     <ion-item>
       <ion-label>Length of Trip</ion-label>
-      <ion-input type="tel"[(ngModel)]='tripLength' name="tripLength" ></ion-input>
+      <ion-input type="tel" [(ngModel)]='newDestination.tripLength' name="tripLength"></ion-input>
     </ion-item>
   </form>
   <div class="buttonLocation">
-    <ion-button id="addDestinationButton" size="small" (click)="addDestination()" >Create Destination</ion-button>
+    <ion-button id="addDestinationButton" size="small" (click)="addDestination()">Create Destination</ion-button>
   </div>
 
 
