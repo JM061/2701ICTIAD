@@ -18,7 +18,11 @@ const routes: Routes = [
       import('./create-account/create-account.module').then(
         (m) => m.CreateAccountPageModule
       ),
+  },  {
+    path: 'edit-destination-modal',
+    loadChildren: () => import('./edit-destination-modal/edit-destination-modal.module').then( m => m.EditDestinationModalPageModule)
   },
+
 ];
 @NgModule({
   imports: [

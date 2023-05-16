@@ -19,19 +19,22 @@ export class DestinationModalPage implements OnInit {
   tripLength: number;
   accomType: string;
 
-
-
-  destinations: Destination[] = [];
-  newDestination: Destination = <Destination>{};
-
-
-
-
   constructor(
     private nav: NavParams,
     private modalController: ModalController,
-    private userStorage: UserStorageService,
-  ) {}
+  ) { }
+
+  addDestination() {
+    const destination = {
+      location: this.location,
+      description: this.description,
+      travelDate: this.travelDate,
+      tripLength: this.tripLength,
+      accomType: this.accomType
+    };
+    this.modalController.dismiss(destination)
+
+    }
 
   //gets the data from the user input
   ngOnInit() {}
@@ -39,36 +42,5 @@ export class DestinationModalPage implements OnInit {
   dismissModal() {
     this.modalController.dismiss();
   }
-
-
-
-  addDestination(){
-    this.newDestination.location = this.location;
-    this.newDestination.description = this.description;
-    this.newDestination.travelDate = this.travelDate;
-    this.newDestination.tripLength = this.tripLength;
-    this.newDestination.accomType = this.accomType;
-
-    this.userStorage.newDestination(this.newDestination).then(destination => {
-      this.newDestination = Destination[];
-    })
-    this.dismissModal()
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
