@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild, importProvidersFrom,} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  importProvidersFrom,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, ModalController, NavParams } from '@ionic/angular';
 import { UserStorageService, Destination } from '../user-storage.service';
@@ -21,8 +26,8 @@ export class DestinationModalPage implements OnInit {
 
   constructor(
     private nav: NavParams,
-    private modalController: ModalController,
-  ) { }
+    private modalController: ModalController
+  ) {}
 
   addDestination() {
     const destination = {
@@ -30,11 +35,10 @@ export class DestinationModalPage implements OnInit {
       description: this.description,
       travelDate: this.travelDate,
       tripLength: this.tripLength,
-      accomType: this.accomType
+      accomType: this.accomType,
     };
-    this.modalController.dismiss(destination)
-
-    }
+    this.modalController.dismiss(destination);
+  }
 
   //gets the data from the user input
   ngOnInit() {}
@@ -42,5 +46,4 @@ export class DestinationModalPage implements OnInit {
   dismissModal() {
     this.modalController.dismiss();
   }
-
 }
