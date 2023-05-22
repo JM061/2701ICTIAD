@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 
 const USER_KEY = 'accountData';
 const DESTINATION_KEY = 'destinationData';
-
+const LOGGEDIN_USER = 'LoggedIN';
 export interface Destination {
   destinationId: number;
   location: string;
@@ -49,6 +49,7 @@ export class UserStorageService {
   async login(fName: string, password: string): Promise<boolean> {
     const userData = await this.storage.get(USER_KEY);
     if (userData && userData.password === password) {
+      await this.storage.set(LOGGEDIN_USER, fName);
       this.router.navigate(['/tabs', { fName }]);
       return true;
     }
@@ -69,20 +70,27 @@ export class UserStorageService {
 
   async getDestinations() {
     const destinations = await this.storage.get(DESTINATION_KEY);
-    console.log('Destinations:', destinations);
     return destinations || [];
   }
 
   async getUser() {
-    const user = await this.storage.get(USER_KEY)
-    console.log('Logged in User: ', user)
+    const user = await this.storage.get(USER_KEY);
     return user;
+  }
+
+  async getLoggedIn() {
+    const loggedInUser = await this.storage.get(LOGGEDIN_USER);
+    return loggedInUser;
+  }
+
+  async removeDestination(index: number) {
+    const destinations = await this.storage.get(DESTINATION_KEY);
+    if (destinations && Array.isArray(destinations)) {
+      destinations.splice(index, 1);
+      await this.storage.set(DESTINATION_KEY, destinations);
+    }
+  }
 }
-
-
-}
-
-
 
 //
 //removeDestination(destinationId: number) {

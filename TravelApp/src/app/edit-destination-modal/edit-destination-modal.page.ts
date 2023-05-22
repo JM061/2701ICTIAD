@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-destination-modal',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditDestinationModalPage implements OnInit {
 
-  constructor() { }
+  destinations: any;
 
-  ngOnInit() {
+  constructor(private modalController: ModalController, private activatedRoute:ActivatedRoute) { }
+
+  ngOnInit() { }
+
+
+
+
+
+
+
+
+
+  dismissModal() {
+    this.modalController.dismiss();
   }
-
 }

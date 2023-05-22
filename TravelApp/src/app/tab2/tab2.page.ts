@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DestinationModalPage } from '../destination-modal/destination-modal.page';
 import { ModalController } from '@ionic/angular';
 import { UserStorageService } from '../user-storage.service';
-
+import { EditDestinationModalPage } from '../edit-destination-modal/edit-destination-modal.page';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -14,20 +14,14 @@ export class Tab2Page implements OnInit {
   fName: string;
   destinations: any[];
 
-
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private modalController: ModalController,
-    private storageService: UserStorageService) { }
-
-
-
-
-
+    private storageService: UserStorageService
+  ) {}
 
   //get the username that the user logs in with to display on main page
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ionViewWillEnter() {
     this.loadDestinations();
@@ -35,17 +29,20 @@ export class Tab2Page implements OnInit {
 
   async loadDestinations() {
     this.destinations = await this.storageService.getDestinations();
-    console.log("Loaded Destinations:", this.destinations)
+    console.log('Loaded Destinations:', this.destinations);
   }
 
-
+  async removeDestination(index: number) {
+    await this.storageService.removeDestination(index);
+    await this.loadDestinations();
+  }
 
   async presentModal() {
     const modal = await this.modalController.create({
       component: DestinationModalPage,
     });
 
-    modal.onDidDismiss().then(data => {
+    modal.onDidDismiss().then((data) => {
       if (data?.data) {
         this.storageService.saveDestination(data.data);
         this.loadDestinations();
@@ -54,16 +51,20 @@ export class Tab2Page implements OnInit {
     return await modal.present();
   }
 
-
-
-
-
-
-
-
-
-
-
+  async editDestinationModal() {
+    const modal = await this.modalController.create({
+      component: EditDestinationModalPage,
+      componentProps: {
+        destinations: this.destinations,
+      },
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data?.data) {
+        this.storageService.saveDestination(data.data);
+        this.loadDestinations();
+      }
+    });
+  }
 
   //  //presents the modal that allows the user to add a destination
   //  async presentModal() {

@@ -25,7 +25,6 @@ export class DestinationModalPage implements OnInit {
   accomType: string;
 
   constructor(
-    private nav: NavParams,
     private modalController: ModalController
   ) {}
 

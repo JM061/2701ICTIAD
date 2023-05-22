@@ -21,7 +21,6 @@ export class Tab3Page {
   async loadUser(){
     this.userData = await this.userStorage.getUser();
     console.log(this.userData)
-    return 
   }
 
 

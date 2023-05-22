@@ -5,17 +5,17 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
+  <ion-list *ngIf="userData">
     <ion-list-header>
-      {{userData}}
+      <h1>{{userData.fName}} {{userData.lName}}</h1>
     </ion-list-header>
     <ion-item>
+      {{userData.email}}
+      {{userData.password}}
     </ion-item>
+
     <ion-item>
-      <p>a Chart will be included to show the user the number of destinations in total</p>
-    </ion-item>
-    <ion-item>
-      <p>User can also upload an image if they choose</p>
+
     </ion-item>
   </ion-list>
 </ion-content>
