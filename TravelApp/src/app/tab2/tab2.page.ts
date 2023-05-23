@@ -11,8 +11,8 @@ import { EditDestinationModalPage } from '../edit-destination-modal/edit-destina
 })
 export class Tab2Page implements OnInit {
   //initialises variables used on this page
-  fName: string;
   destinations: any[];
+  userData: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,6 +25,13 @@ export class Tab2Page implements OnInit {
 
   ionViewWillEnter() {
     this.loadDestinations();
+    this.loadUser();
+
+  }
+
+  async loadUser(){
+    this.userData = await this.storageService.getUser();
+    console.log(this.userData)
   }
 
   async loadDestinations() {

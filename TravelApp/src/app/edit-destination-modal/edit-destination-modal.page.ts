@@ -8,7 +8,11 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./edit-destination-modal.page.scss'],
 })
 export class EditDestinationModalPage implements OnInit {
-
+  location: string;
+  description: string;
+  travelDate: string;
+  tripLength: number;
+  accomType: string;
   destinations: any;
 
   constructor(private modalController: ModalController, private activatedRoute:ActivatedRoute) { }
@@ -17,6 +21,9 @@ export class EditDestinationModalPage implements OnInit {
 
 
 
+  editDestination() {
+    console.log("Destination Has been changed!! :)")
+  }
 
 
 

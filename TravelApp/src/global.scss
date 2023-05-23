@@ -25,16 +25,21 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-
+ion-item{
+  --ion-item-background:white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 ion-content {
   --ion-background-color: #EBF2FA;
 }
 
+
+
 form{
   width: 95%;
   align-items: center;
-  margin: auto;
-  padding:5px;
+
 }
 #header{
   padding-top: 15px;

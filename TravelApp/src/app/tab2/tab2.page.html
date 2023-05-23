@@ -6,8 +6,8 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Welcome, {{ fName }} </ion-title>
+    <ion-toolbar *ngIf="userData">
+      <ion-title size="large">Welcome, {{ userData.fName }} </ion-title>
     </ion-toolbar>
     <ion-button id="addDest" size="small" (click)="presentModal()">Add Destination</ion-button>
   </ion-header>
@@ -20,12 +20,12 @@
 
   <ion-list>
     <ion-list-header>Destinations</ion-list-header>
-    <ion-item-sliding class="travelDestination" *ngFor="let destination of destinations; let i = index">
+    <ion-item-sliding class="listLocation"  *ngFor="let destination of destinations; let i = index">
       <ion-item-options side="start">
         <ion-item-option color="success">Add Details</ion-item-option>
       </ion-item-options>
-      <ion-item style="background-color: white;">
-        <ion-thumbnail slot="start"><!--an image of the location will go here-->
+      <ion-item class="listItem"lines="none">
+        <ion-thumbnail slot="start">
           <ion-icon style="width: 100%; height: 100%" name="image-outline"></ion-icon>
         </ion-thumbnail>
         <ion-label>
@@ -34,13 +34,13 @@
           <p id="travelDate">{{destination.travelDate}}</p>
         </ion-label>
       </ion-item>
-
       <ion-item-options side="end">
         <ion-item-option>Edit</ion-item-option>
         <ion-item-option color="danger" (click)="removeDestination(i)">Remove</ion-item-option>
       </ion-item-options>
 
     </ion-item-sliding>
+
   </ion-list>
 
 

@@ -1,6 +1,5 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -25,7 +24,20 @@
 #container a {
   text-decoration: none;
 }
+ion-item{
+  margin:5px;
+  border-radius: 5px;
+  border: 0.5px lightgrey solid;
 
+}
+ion-label{
+  padding-right: 1px;
+  margin-right: 1px;
+}
+ion-input{
+ padding-left: 20px;
+
+}
 
 
 #newAccount{
@@ -33,6 +45,7 @@
   width: min-content;
   margin-left: auto;
   margin-right: auto;
+  border: 0.5px lightgrey solid
 }
 
 #newACC{
@@ -42,8 +55,7 @@
 #signInForm{
   margin: auto;
   width: 90%;
-
-
+  padding: 10px;
 }
 
 #errorMessage{

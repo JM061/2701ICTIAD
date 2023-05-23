@@ -3,6 +3,30 @@ ion-title{
 
 }
 
+ion-item{
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 0.5px lightgrey solid;
+  align-content: center;
+}
+
+ion-select{
+width: 100%;
+padding: auto;
+}
+
+.middleForm{
+  align-items: center;
+  margin: auto;
+
+}
+#destinationForm{
+  width: 100%;
+  padding: auto;
+  margin: auto;
+  padding-top: 20px;
+}
+
 .buttonLocation{
   text-align: center;
   margin: auto;

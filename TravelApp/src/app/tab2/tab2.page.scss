@@ -1,12 +1,12 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
+
 
 #container strong {
   font-size: 20px;
@@ -16,9 +16,7 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
@@ -29,5 +27,14 @@
 
 #addDest{
   padding-left: 10px;
-  
+}
+
+.listLocation{
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.listItem{
+ border-radius: 5px;
+ border: 0.5px solid lightgrey;
+
 }

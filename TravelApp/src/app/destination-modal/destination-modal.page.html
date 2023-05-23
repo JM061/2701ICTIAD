@@ -8,12 +8,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <form>
-    <ion-item>
+
+  <div id="destinationForm">
+  <form class="middleForm">
+    <ion-item lines="none">
       <ion-label>Destination Name:</ion-label>
       <ion-input type="text" [(ngModel)]="location" name="location"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label>Date: </ion-label>
       <ion-datetime-button datetime="datetime"></ion-datetime-button>
     </ion-item>
@@ -23,14 +25,14 @@
           [(ngModel)]="travelDate" name="travelDate"></ion-datetime>
       </ng-template>
     </ion-modal>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label>Description</ion-label>
       <ion-input type="text" [(ngModel)]="description" name="description"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-list>
-        <ion-item>
-          <ion-select aria-label="Fruit" interface="popover" placeholder="Accomidation Type"
+        <ion-item lines="none">
+          <ion-select interface="popover" placeholder="Accomidation Type"
             [(ngModel)]="accomType" name="accomType">
             <ion-select-option value="hotel">Hotel</ion-select-option>
             <ion-select-option value="airbnb">AirBnb</ion-select-option>
@@ -40,11 +42,12 @@
         </ion-item>
       </ion-list>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label>Length of Trip</ion-label>
       <ion-input type="tel" [(ngModel)]='tripLength' name="tripLength"></ion-input>
     </ion-item>
   </form>
+  </div>
   <div class="buttonLocation">
     <ion-button id="addDestinationButton" size="small" (click)="addDestination()">Create Destination</ion-button>
   </div>

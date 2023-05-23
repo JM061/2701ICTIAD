@@ -1,7 +1,5 @@
 #toolbar-title{
   width: 100%;
-
-
 }
 
 
@@ -10,4 +8,18 @@
   padding: auto;
   margin: auto;
   padding-top: 20px;
+}
+
+ion-item{
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 0.5px lightgrey solid;
+
+}
+
+#accountSubmit{
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+
 }
