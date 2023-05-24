@@ -29,8 +29,6 @@
       <ion-label>Description</ion-label>
       <ion-input type="text" [(ngModel)]="description" name="description"></ion-input>
     </ion-item>
-    <ion-item lines="none">
-      <ion-list>
         <ion-item lines="none">
           <ion-select interface="popover" placeholder="Accomidation Type"
             [(ngModel)]="accomType" name="accomType">
@@ -40,8 +38,6 @@
             <ion-select-option value="other">Other</ion-select-option>
           </ion-select>
         </ion-item>
-      </ion-list>
-    </ion-item>
     <ion-item lines="none">
       <ion-label>Length of Trip</ion-label>
       <ion-input type="tel" [(ngModel)]='tripLength' name="tripLength"></ion-input>

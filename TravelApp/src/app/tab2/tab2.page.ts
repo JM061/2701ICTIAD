@@ -3,7 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DestinationModalPage } from '../destination-modal/destination-modal.page';
 import { ModalController } from '@ionic/angular';
 import { UserStorageService } from '../user-storage.service';
+import { Storage } from '@ionic/storage-angular';
 import { EditDestinationModalPage } from '../edit-destination-modal/edit-destination-modal.page';
+const DESTINATION_KEY = 'destinationData';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -17,7 +20,8 @@ export class Tab2Page implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private modalController: ModalController,
-    private storageService: UserStorageService
+    private storageService: UserStorageService,
+    private storage: Storage
   ) {}
 
   //get the username that the user logs in with to display on main page
@@ -26,7 +30,6 @@ export class Tab2Page implements OnInit {
   ionViewWillEnter() {
     this.loadDestinations();
     this.loadUser();
-
   }
 
   async loadUser(){
@@ -58,44 +61,26 @@ export class Tab2Page implements OnInit {
     return await modal.present();
   }
 
-  async editDestinationModal() {
+  async editDestinationModal(index: number) {
+    const destinations = await this.storage.get(DESTINATION_KEY);
+    const destination = destinations[index];
+    console.log(destination)
     const modal = await this.modalController.create({
       component: EditDestinationModalPage,
       componentProps: {
-        destinations: this.destinations,
-      },
+        location: destination.location,  description: destination.description, travelDate: destination.travelDate, tripLength: destination.tripLength, accomType: destination.accomType
+      }
     });
     modal.onDidDismiss().then((data) => {
-      if (data?.data) {
-        this.storageService.saveDestination(data.data);
+      if (data && data.data) {
+        destinations[index] = data.data;
+        this.storage.set(DESTINATION_KEY, destinations)
         this.loadDestinations();
       }
     });
+    return await modal.present()
   }
 
-  //  //presents the modal that allows the user to add a destination
-  //  async presentModal() {
-  //    const modal = await this.modalController.create({
-  //      component: DestinationModalPage,
-  //      componentProps: [
-  //        {
-  //          location: this.location,
-  //          travelDate: this.travelDate,
-  //          description: this.description,
-  //        },
-  //      ],
-  //    });
-  //    modal
-  //      .onDidDismiss() //dismisses the modal and pushes the data to the array that displays the destinations
-  //      .then((data) => {
-  //        this.location = data.data.location;
-  //        this.travelDate = data.data.travelDate;
-  //        this.description = data.data.description;
-  //        console.log(data);
-  //        this.destinations.push(data.data);
-  //      });
-  //    return modal.present();
-  //  //}
 
   //  //when the user selects the edit button in the slide menu, will display the edit screen
   //  //user can edit the destination

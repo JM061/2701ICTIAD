@@ -58,7 +58,6 @@ export class UserStorageService {
 
   async saveDestination(destination: any) {
     let destinations = await this.getDestinations();
-
     if (!destinations) {
       destinations = [];
     }
@@ -90,7 +89,22 @@ export class UserStorageService {
       await this.storage.set(DESTINATION_KEY, destinations);
     }
   }
+
+  async EditDestination(index: number){
+    const selectedDestinations = await this.storage.get(DESTINATION_KEY);
+    
+
+
+  }
+
+
+
+
 }
+
+
+
+
 
 //
 //removeDestination(destinationId: number) {

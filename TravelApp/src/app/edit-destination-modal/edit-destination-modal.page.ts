@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { UserStorageService } from '../user-storage.service';
 
 @Component({
   selector: 'app-edit-destination-modal',
@@ -15,20 +16,29 @@ export class EditDestinationModalPage implements OnInit {
   accomType: string;
   destinations: any;
 
-  constructor(private modalController: ModalController, private activatedRoute:ActivatedRoute) { }
 
-  ngOnInit() { }
+  constructor(private modalController: ModalController, private activatedRoute:ActivatedRoute, private userStorage: UserStorageService) { }
+
+  ngOnInit() {
 
 
 
-  editDestination() {
-    console.log("Destination Has been changed!! :)")
   }
 
 
 
+  editDestination() {
+    const destination = {
+      location: this.location,
+      description: this.description,
+      travelDate: this.travelDate,
+      tripLength: this.tripLength,
+      accomType: this.accomType,
+    };
 
-
+    this.modalController.dismiss(destination)
+    console.log("Destination Has been changed!! :)")
+  }
 
   dismissModal() {
     this.modalController.dismiss();

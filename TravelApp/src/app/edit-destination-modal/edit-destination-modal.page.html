@@ -4,49 +4,47 @@
       <ion-buttons slot="start">
         <ion-back-button (click)="dismissModal()"></ion-back-button>
       </ion-buttons>
-      <ion-title size="medium">Add Destination</ion-title>
+      <ion-title size="medium">Edit Destination</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <form>
-    <ion-item>
-      <ion-label>Destination Name:</ion-label>
-      <ion-input type="text" [(ngModel)]="location" name="location"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Date: </ion-label>
-      <ion-datetime-button datetime="datetime"></ion-datetime-button>
-    </ion-item>
-    <ion-modal [keepContentsMounted]="true">
-      <ng-template>
-        <ion-datetime presentation="date" [showDefaultButtons]="true" id="datetime" displayFormat="DD/MM/YYYY HH:mm"
-          [(ngModel)]="travelDate" name="travelDate"></ion-datetime>
-      </ng-template>
-    </ion-modal>
-    <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-input type="text" [(ngModel)]="description" name="description"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-list>
-        <ion-item>
-          <ion-select aria-label="Fruit" interface="popover" placeholder="Accomidation Type"
-            [(ngModel)]="accomType" name="accomType">
-            <ion-select-option value="hotel">Hotel</ion-select-option>
-            <ion-select-option value="airbnb">AirBnb</ion-select-option>
-            <ion-select-option value="famfriend">Family/Friends</ion-select-option>
-            <ion-select-option value="other">Other</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-    </ion-item>
-    <ion-item>
-      <ion-label>Length of Trip</ion-label>
-      <ion-input type="tel" [(ngModel)]='tripLength' name="tripLength"></ion-input>
-    </ion-item>
-  </form>
+
+  <div id="destinationForm">
+    <form class="middleForm">
+      <ion-item lines="none">
+        <ion-input type="text" label="Destination Name:" [(ngModel)]="location" name="location"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          Date:
+        </ion-label>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      </ion-item>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime presentation="date" [showDefaultButtons]="true" id="datetime" displayFormat="DD/MM/YYYY HH:mm"
+            [(ngModel)]="travelDate" name="travelDate"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-item lines="none">
+        <ion-input type="text" label="Description:" [(ngModel)]="description" name="description"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-select interface="popover" placeholder="Accomidation Type" [(ngModel)]="accomType" name="accomType">
+          <ion-select-option value="hotel">Hotel</ion-select-option>
+          <ion-select-option value="airbnb">AirBnb</ion-select-option>
+          <ion-select-option value="famfriend">Family/Friends</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Length of Trip</ion-label>
+        <ion-input type="tel" [(ngModel)]='tripLength' name="tripLength"></ion-input>
+      </ion-item>
+    </form>
+  </div>
   <div class="buttonLocation">
-    <ion-button id="addDestinationButton" size="small" (click)="editDestination()">Create Destination</ion-button>
+    <ion-button id="addDestinationButton" size="small" (click)="editDestination()">Edit Destination</ion-button>
   </div>
 
 
