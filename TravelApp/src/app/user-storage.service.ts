@@ -92,10 +92,7 @@ export class UserStorageService {
 
   async EditDestination(index: number){
     const selectedDestinations = await this.storage.get(DESTINATION_KEY);
-    
-
-
-  }
+    }
 
 
 

@@ -6,9 +6,10 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LocationMapViewComponent } from './location-map-view/location-map-view.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LocationMapViewComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

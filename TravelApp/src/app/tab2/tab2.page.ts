@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { UserStorageService } from '../user-storage.service';
 import { Storage } from '@ionic/storage-angular';
 import { EditDestinationModalPage } from '../edit-destination-modal/edit-destination-modal.page';
+import { LocationMapViewComponent } from '../location-map-view/location-map-view.component';
 const DESTINATION_KEY = 'destinationData';
 
 @Component({
@@ -82,26 +83,28 @@ export class Tab2Page implements OnInit {
   }
 
 
-  //  //when the user selects the edit button in the slide menu, will display the edit screen
-  //  //user can edit the destination
-  //  async editDestination(index) {
-  //    let modal = await this.modalController.create({
-  //      component: DestinationModalPage,
-  //      componentProps: {
-  //        location: this.destinations[index].location,
-  //        travelDate: this.destinations[index].travelDate,
-  //        description: this.destinations[index].description,
-  //      },
-  //    });
-  //    //when the modal is dismissed it changes the data in the array.
-  //    //will then update the list
-  //    modal.onDidDismiss().then((data) => {
-  //      this.location = data.data.location;
-  //      this.travelDate = data.data.travelDate;
-  //      this.description = data.data.description;
-  //      this.destinations[index] = data.data;
-  //    });
-  //    return modal.present();
-  //  }//
-  //}
+
+
+  async locationMapView(index: number){
+    const destinations = await this.storage.get(DESTINATION_KEY);
+    const destination = destinations[index];
+    //console.log(destination)
+    const modal = await this.modalController.create({
+      component: LocationMapViewComponent,
+      componentProps: {mapCenterLocation: destination.location}
+    });
+    return await modal.present()
+
+
+
+
+  }
+
+
+
+
+
+
+
+
 }

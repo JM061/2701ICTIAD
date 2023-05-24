@@ -22,7 +22,7 @@
     <ion-list-header>Destinations</ion-list-header>
     <ion-item-sliding class="listLocation"  *ngFor="let destination of destinations; let i = index">
       <ion-item-options side="start">
-        <ion-item-option color="success">Add Details</ion-item-option>
+        <ion-item-option color="success" (click)="locationMapView(i)">View On Map</ion-item-option>
       </ion-item-options>
       <ion-item class="listItem"lines="none">
         <ion-thumbnail slot="start">
